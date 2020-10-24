@@ -41,10 +41,10 @@
   "start_url": "/index.html",
   "scope": ".",
   "display": "standalone",
+  "orientation": "portrait-primary",
   "background_color": "#fff",
   "theme_color": "#3f51b5",
-  "description": "Keep running until you're super sweaty!",
+  "description": "A simple Instagram Clone, implementing a lot of PWA love.",
   "dir": "ltr",
-  "lang": "en-US",
-  "orientation": "portrait-primary"
+  "lang": "en-US"
 }
