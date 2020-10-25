@@ -46,7 +46,7 @@ function onSaveButtonClicked(event) {
   console.log('clicked');
   if ('caches' in window) {
     caches.open('user-requested').then(function (cache) {
-      cache.add('https://pwagram-e9240.firebaseio.com/posts.json');
+      cache.add('https://httpbin.org/get');
       cache.add('/src/images/sf-boat.jpg');
     });
   }
@@ -109,22 +109,11 @@ fetch(url)
     updateUI(dataArray);
   });
 
-if ('caches' in window) {
-  caches
-    .match(url)
-    .then(function (response) {
-      if (response) {
-        return response.json();
-      }
-    })
-    .then(function (data) {
+if ('indexedDB' in window) {
+  readAllData('posts').then(function (data) {
+    if (!networkDataReceived) {
       console.log('From cache', data);
-      if (!networkDataReceived) {
-        var dataArray = [];
-        for (var key in data) {
-          dataArray.push(data[key]);
-        }
-        updateUI(dataArray);
-      }
-    });
+      updateUI(data);
+    }
+  });
 }
